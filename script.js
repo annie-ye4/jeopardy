@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setRandomDoubleJeopardy();
     loadAnsweredTiles();
     addTileClickListeners();
+    addFinalListeners();
 });
 
 let doubleJeopardyTileId = null;
@@ -25,6 +26,48 @@ function addTileClickListeners() {
             }
         });
     });
+}
+
+// Final Jeopardy handlers
+function addFinalListeners() {
+    const btn = document.getElementById('finalJeopardyBtn');
+    if (btn) btn.addEventListener('click', openFinalJeopardy);
+
+    const reveal = document.querySelector('.btn-reveal-final');
+    if (reveal) reveal.addEventListener('click', toggleFinalAnswer);
+
+    const closeBtns = Array.from(document.querySelectorAll('.btn-close-final'));
+    closeBtns.forEach(b => b.addEventListener('click', closeFinalModal));
+}
+
+function openFinalJeopardy() {
+    // Read the final question/answer from the hidden entity
+    const finalEntity = document.getElementById('finalJeopardy');
+    const q = finalEntity ? finalEntity.getAttribute('data-question') : 'Final question not set.';
+    const a = finalEntity ? finalEntity.getAttribute('data-answer') : 'Final answer not set.';
+    document.getElementById('finalQuestionText').textContent = q;
+    document.getElementById('finalAnswerText').textContent = a;
+    document.getElementById('finalAnswerDisplay').classList.add('hidden');
+    const revealBtn = document.querySelector('.btn-reveal-final');
+    if (revealBtn) revealBtn.textContent = 'Reveal Answer';
+    document.getElementById('finalModal').style.display = 'block';
+}
+
+function toggleFinalAnswer() {
+    const answerDisplay = document.getElementById('finalAnswerDisplay');
+    const revealBtn = document.querySelector('.btn-reveal-final');
+    if (!answerDisplay) return;
+    if (answerDisplay.classList.contains('hidden')) {
+        answerDisplay.classList.remove('hidden');
+        if (revealBtn) revealBtn.textContent = 'Hide Answer';
+    } else {
+        answerDisplay.classList.add('hidden');
+        if (revealBtn) revealBtn.textContent = 'Reveal Answer';
+    }
+}
+
+function closeFinalModal() {
+    document.getElementById('finalModal').style.display = 'none';
 }
 
 function openQuestion(tileId) {
@@ -157,6 +200,10 @@ function saveAnsweredTiles() {
 
 function loadAnsweredTiles() {
     try {
+        // Always clear any existing answered state first to handle bfcache/back-navigation
+        const allTiles = document.querySelectorAll('.tile');
+        allTiles.forEach(t => t.classList.remove('answered'));
+
         const raw = localStorage.getItem('answeredTiles');
         if (!raw) return;
         const answered = JSON.parse(raw);

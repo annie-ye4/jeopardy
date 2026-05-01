@@ -85,6 +85,13 @@ function endGame() {
     }
 
     openWinnerPopup();
+
+    // Clear answered tiles so the main board appears fresh when returning
+    try {
+        localStorage.removeItem('answeredTiles');
+    } catch (e) {
+        console.warn('Could not clear answered tiles on endGame:', e);
+    }
 }
 
 function cloneTeamPhotos(teamNumber) {

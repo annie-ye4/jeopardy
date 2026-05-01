@@ -12,6 +12,7 @@
         <header>
             <h1 class="main-title">42 john jeopardy!</h1>
             <a href="scores.html" class="scores-link">view scores</a>
+            <button id="finalJeopardyBtn" class="btn-final">final jeopardy</button>
         </header>
 
         <div class="game-board">
@@ -104,6 +105,9 @@
         </div>
     </div>
 
+    <!-- Final Jeopardy data (IDE-visible entity) -->
+    <div id="finalJeopardy" data-question="This is the Final Jeopardy: Name the building where 42 John meets." data-answer="The Apple House 🏠" style="display:none;"></div>
+
     <!-- Double Jeopardy Popup -->
     <div id="doubleJeopardyPopup" class="double-jeopardy-popup">
         <div class="double-jeopardy-content">
@@ -113,6 +117,28 @@
 
     <!-- Timer Display (Outside popup so it stays visible) -->
     <div id="timerDisplay" class="timer-display hidden">60</div>
+
+    <!-- Final Jeopardy Modal -->
+    <div id="finalModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>final jeopardy</h2>
+                <button class="btn-close-final">×</button>
+            </div>
+            <div class="modal-body">
+                <h3>Question:</h3>
+                <p id="finalQuestionText">(final question will appear here)</p>
+                <div id="finalAnswerDisplay" class="answer-display">
+                    <h3>Answer:</h3>
+                    <p id="finalAnswerText">(final answer)</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-reveal-final">Reveal Answer</button>
+                    <button class="btn-close-final">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <audio id="jeopardyMusic" preload="auto" style="display: none;" loop>
         <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
