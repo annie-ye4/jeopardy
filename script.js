@@ -1,6 +1,7 @@
 // Set random double jeopardy tile on page load
 document.addEventListener('DOMContentLoaded', function() {
     setRandomDoubleJeopardy();
+    loadAnsweredTiles();
     addTileClickListeners();
 });
 
@@ -100,6 +101,7 @@ function markAnswered() {
     const tile = document.getElementById(window.currentTileId);
     if (tile) {
         tile.classList.add('answered');
+        saveAnsweredTiles();
     }
     closeModal();
 }
@@ -112,6 +114,7 @@ function closeModal() {
         const tile = document.getElementById(window.currentTileId);
         if (tile) {
             tile.classList.add('answered');
+            saveAnsweredTiles();
         }
     }
 }
@@ -137,7 +140,34 @@ function resetBoard() {
     tiles.forEach(tile => {
         tile.classList.remove('answered');
     });
+    // Clear persisted state
+    saveAnsweredTiles();
     setRandomDoubleJeopardy();
+}
+
+// Persist answered tiles to localStorage so state survives page navigation
+function saveAnsweredTiles() {
+    const answered = Array.from(document.querySelectorAll('.tile.answered')).map(t => t.id);
+    try {
+        localStorage.setItem('answeredTiles', JSON.stringify(answered));
+    } catch (e) {
+        console.warn('Could not save answered tiles:', e);
+    }
+}
+
+function loadAnsweredTiles() {
+    try {
+        const raw = localStorage.getItem('answeredTiles');
+        if (!raw) return;
+        const answered = JSON.parse(raw);
+        if (!Array.isArray(answered)) return;
+        answered.forEach(id => {
+            const tile = document.getElementById(id);
+            if (tile) tile.classList.add('answered');
+        });
+    } catch (e) {
+        console.warn('Could not load answered tiles:', e);
+    }
 }
 
 // Double Jeopardy Timer
