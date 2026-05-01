@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="main-title">42 john jeopardy!</h1>
+            <a href="scores.html" class="scores-link">view scores</a>
+        </header>
+
+        <div class="game-board">
+            <div class="categories">
+                <div class="category-header">boy basement</div>
+                <div class="category-header">third floor</div>
+                <div class="category-header">fourth floor</div>
+                <div class="category-header">who said it?</div>
+                <div class="category-header">messy misc.</div>
+            </div>
+
+            <div class="board">
+                <!-- Column 1 -->
+                <div class="column">
+                    <div class="tile" id="tile-1-1" data-value="100" data-column="1" data-question="This football club was founded in 1886 and is also known as Kevin's favorite team." data-answer="Arsenal">100</div>
+                    <div class="tile" id="tile-1-2" data-value="200" data-column="1" data-question="The Brown Daily Herald, Inc. is a financially independent, nonprofit media organization. Owen held this position during his time on the board." data-answer="Managing Editor of Newsroom">200</div>
+                    <div class="tile" id="tile-1-3" data-value="300" data-column="1" data-question="In November of 2022, Annie and Owen contracted a life threatening illness after sharing a meal at this restaurant." data-answer="The Cheesecake Factory">300</div>
+                    <div class="tile" id="tile-1-4" data-value="400" data-column="1" data-question="The 10th Annual Ocean State Rhode Races in Narragansett, RI was held on Sunday October 25, 2026. Kevin placed 22nd in his age division with this time." data-answer="1:42">400</div>
+                    <div class="tile" id="tile-1-5" data-value="500" data-column="1" data-question="The Texas Tribune covers politics and a range of policy issues that affect all Texans. Owen impressively joined as a summer fellow and made this many contributions (that I could find on the website)." data-answer="32">500</div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="column">
+                    <div class="tile" id="tile-2-1" data-value="100" data-column="2" data-question="Colloseum is a multilevel space with 3 themed clubs, plus a patio, DJs, live music, VIP booths & dubstep parties. Sam had intimate relations with someone wearing a jacket of this popular cartoon character." data-answer="Spongebob">100</div>
+                    <div class="tile" id="tile-2-2" data-value="200" data-column="2" data-question="Hot Pockets is an American brand of microwaveable turnovers generally containing one or more types of cheese, meat, or vegetables. Hope had an obsession with this particular flavor, and would often be caught leaving CVS with multiple boxes." data-answer="Meatballs & Mozzarella">200</div>
+                    <div class="tile" id="tile-2-3" data-value="300" data-column="2" data-question="The Medical College Admission Test (MCAT) is a 7.5-hour, computer-based exam for prospective medical students. Hope made that exam her BITCH with this " data-answer="521">300</div>
+                    <div class="tile" id="tile-2-4" data-value="400" data-column="2" data-question="Nose piercings, a trend often associated with modern fashion, have a 4,000–5,000 year history originating in the Middle East. Sam got hers on this month and year." data-answer="May 2023">400</div>
+                    <div class="tile" id="tile-2-5" data-value="500" data-column="2" data-question="samhopesavorflavors is Sam and Hope's wholesome joint instagram account for food reviews. In one of their reviews, they went to Sakura and said that this roll 'makes you feel like a grizzly bear catching salmon from a stream.'" data-answer="Providence roll">500</div>
+                </div>
+
+                <!-- Column 3 (Double Jeopardy location will be randomly selected) -->
+                <div class="column">
+                    <div class="tile" id="tile-3-1" data-value="100" data-column="3" data-question="New York City's nightlife consists of a dynamic landscape of hyper-curated experiences. This bar quickly became Lauren and Annie's weekly destination on Saturdays." data-answer="Automatic Slims">100</div>
+                    <div class="tile" id="tile-3-2" data-value="200" data-column="3" data-question="The Brown University Computer Science Department employs more than 400 undergraduates each semester as undergraduate teaching assistants. Annie was the HTA for this course (must include course number and title)." data-answer="CSCI 0320: Introduction to Software Engineering">200</div>
+                    <div class="tile" id="tile-3-3" data-value="300" data-column="3" data-question="Heng Thai & Rotisserie is a cozy, underground restaurant in Providence known for its authentic flavors and rustic speakeasy vibe. This is typically Ella's go-to order at Heng Thai." data-answer="Pineapple fried rice">300</div>
+                    <div class="tile" id="tile-3-4" data-value="400" data-column="3" data-question="JPMorgan Chase & Co. is a leading global financial services firm and the largest bank in the United States. Lauren will be joining this group when she returns for her fulltime role." data-answer="Financial Institutions Group">400</div>
+                    <div class="tile" id="tile-3-5" data-value="500" data-column="3" data-question="Tyler the Creator is an American rapper, producer, fashion designer, and cultural influencer. He met Ella on the vineyard and complimented her on these two of her stunning features." data-answer="Hair and freckles.">500</div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="column">
+                    <div class="tile" id="tile-4-1" data-value="100" data-column="4" data-question="'Do you ever go through a day to day life and think you're autistic?'" data-answer="Kevin">100</div>
+                    <div class="tile" id="tile-4-2" data-value="200" data-column="4" data-question="Jo: if you had a bbl and a boob job would you rather be placed in your casket laying on your stomach or back <br> ____: On my side to see how tea my body is" data-answer="Ella">200</div>
+                    <div class="tile" id="tile-4-3" data-value="300" data-column="4" data-question="'I just put my whole pussy into this slideshow and now I have to wait?" data-answer="Owen">300</div>
+                    <div class="tile" id="tile-4-4" data-value="400" data-column="4" data-question="'Sorry I was looking past you I was mid-stride.'" data-answer="Czo">400</div>
+                    <div class="tile" id="tile-4-5" data-value="500" data-column="4" data-question="'Hope should never be in a life or death situation because she’d die.'" data-answer="Jo">500</div>
+                </div>
+
+                <!-- Column 5 -->
+                <div class="column">
+                    <div class="tile" id="tile-5-1" data-value="100" data-column="5" data-question="Kevin was introduced to the friend group on Arbor Day, where juice was spilled on him as a cruel and unusual form of initation. The idea was motivated by a particular ex who goes by this Instagram handle." data-answer="judefarleyy">100</div>
+                    <div class="tile" id="tile-5-2" data-value="200" data-column="5" data-question="Fake ID gate is also known as when the group got temporarily divided because of differing opinions on whether people should get fake IDs. Shortly after this conversation, these four individuals took mugshots together and got scammed of $100 when trying to purchase fake IDs." data-answer="Owen, Annie, Lauren, Ella">200</div>
+                    <div class="tile" id="tile-5-3" data-value="300" data-column="5" data-question="Unprompted, our favorite Keeney neighbor David 'Czo' Adesina called our friend group annoying and referred to us as this movie" data-answer="High School Musical">300</div>
+                    <div class="tile" id="tile-5-4" data-value="400" data-column="5" data-question="samhopesavorflavors had a hit post on their story when they realized that Annie's ex had viewed their story without following the account. As a result, a poll about Key West, Florida was made, which is also known as this self-declared republic." data-answer="Conch Republic">400</div>
+                    <div class="tile" id="tile-5-5" data-value="500" data-column="5" data-question="On a particularly fateful night for the house of 42 John, one member left the raw groupchat and moved out. Before leaving the groupchat, they sent a text message containing this many words." data-answer="184">500</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="legend">
+            <p class="legend-text">Click tiles to select answers. Double Jeopardy tile is marked with ⭐</p>
+        </div> -->
+    </div>
+
+    <!-- Question Modal -->
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Question</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="question-section">
+                    <h3>Question:</h3>
+                    <div class="question-display" id="questionDisplay">
+                        <p id="questionText">No question</p>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <button onclick="toggleAnswer()" class="btn-reveal">Reveal Answer</button>
+                    <div class="answer-display hidden" id="answerDisplay">
+                        <p id="answerText">No answer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="markAnswered()" class="btn-mark">Mark as Answered</button>
+                <button onclick="closeModal()" class="btn-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Double Jeopardy Popup -->
+    <div id="doubleJeopardyPopup" class="double-jeopardy-popup">
+        <div class="double-jeopardy-content">
+            <h1>⭐ DOUBLE JEOPARDY ⭐</h1>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
