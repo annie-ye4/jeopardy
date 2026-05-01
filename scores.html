@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeopardy Scores</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -92,6 +93,10 @@
             <p id="winnerMessage" class="winner-message"></p>
         </div>
     </div>
+
+    <audio id="appluseAudio" preload="auto" style="display: none;">
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
 
     <script src="scores.js"></script>
 </body>

@@ -34,6 +34,8 @@ body {
 .container {
     width: 100%;
     max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     background: var(--panel);
     border: 1px solid var(--panel-border);
     border-radius: 22px;
@@ -635,10 +637,12 @@ button {
     z-index: 2000;
     justify-content: center;
     align-items: center;
+    pointer-events: none;
 }
 
 .double-jeopardy-popup.show {
     display: flex;
+    pointer-events: auto;
     animation: fadeIn 0.3s ease;
 }
 
@@ -693,5 +697,59 @@ button {
 
     .double-jeopardy-content h1 {
         font-size: 2.5em;
+    }
+}
+
+/* Photo slide-in animations */
+@keyframes slideInPhoto {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.winner-photos .photo-holder:nth-child(1) {
+    animation: slideInPhoto 0.5s ease 0.1s both;
+}
+
+.winner-photos .photo-holder:nth-child(2) {
+    animation: slideInPhoto 0.5s ease 0.3s both;
+}
+
+.winner-photos .photo-holder:nth-child(3) {
+    animation: slideInPhoto 0.5s ease 0.5s both;
+}
+
+.winner-photos .photo-holder:nth-child(4) {
+    animation: slideInPhoto 0.5s ease 0.7s both;
+}
+
+/* Timer display */
+.timer-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--gold-soft);
+    text-shadow: 0 0 20px rgba(245, 200, 76, 0.6);
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+.timer-display.hidden {
+    display: none;
+}
+
+@keyframes timerPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
     }
 }

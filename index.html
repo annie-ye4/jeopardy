@@ -36,7 +36,7 @@
                 <div class="column">
                     <div class="tile" id="tile-2-1" data-value="100" data-column="2" data-question="Colloseum is a multilevel space with 3 themed clubs, plus a patio, DJs, live music, VIP booths & dubstep parties. Sam had intimate relations with someone wearing a jacket of this popular cartoon character." data-answer="Spongebob">100</div>
                     <div class="tile" id="tile-2-2" data-value="200" data-column="2" data-question="Hot Pockets is an American brand of microwaveable turnovers generally containing one or more types of cheese, meat, or vegetables. Hope had an obsession with this particular flavor, and would often be caught leaving CVS with multiple boxes." data-answer="Meatballs & Mozzarella">200</div>
-                    <div class="tile" id="tile-2-3" data-value="300" data-column="2" data-question="The Medical College Admission Test (MCAT) is a 7.5-hour, computer-based exam for prospective medical students. Hope made that exam her BITCH with this " data-answer="521">300</div>
+                    <div class="tile" id="tile-2-3" data-value="300" data-column="2" data-question="The Medical College Admission Test (MCAT) is a 7.5-hour, computer-based exam for prospective medical students. Hope made that exam her BITCH with this score." data-answer="521">300</div>
                     <div class="tile" id="tile-2-4" data-value="400" data-column="2" data-question="Nose piercings, a trend often associated with modern fashion, have a 4,000–5,000 year history originating in the Middle East. Sam got hers on this month and year." data-answer="May 2023">400</div>
                     <div class="tile" id="tile-2-5" data-value="500" data-column="2" data-question="samhopesavorflavors is Sam and Hope's wholesome joint instagram account for food reviews. In one of their reviews, they went to Sakura and said that this roll 'makes you feel like a grizzly bear catching salmon from a stream.'" data-answer="Providence roll">500</div>
                 </div>
@@ -109,6 +109,13 @@
             <h1>⭐ DOUBLE JEOPARDY ⭐</h1>
         </div>
     </div>
+
+    <!-- Timer Display (Outside popup so it stays visible) -->
+    <div id="timerDisplay" class="timer-display hidden">60</div>
+
+    <audio id="jeopardyMusic" preload="auto" style="display: none;" loop>
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
 
     <script src="script.js"></script>
 </body>

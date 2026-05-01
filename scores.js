@@ -65,7 +65,7 @@ function endGame() {
     if (winners.length === 1) {
         const winningTeam = winners[0];
         title.textContent = `${teamNames[winningTeam.teamNumber]} wins!`;
-        message.textContent = 'they each win $10 gift cards from coffee exchange, hazel origin, or amyn\'s!';
+        message.textContent = 'they each win $10 gift cards from coffee exchange, hazel origin, or amy\'s!';
         photos.appendChild(cloneTeamPhotos(winningTeam.teamNumber));
     } else {
         title.textContent = 'It\'s a tie!';
@@ -107,4 +107,20 @@ function openWinnerPopup() {
     const popup = document.getElementById('winnerPopup');
     popup.style.display = 'flex';
     popup.classList.add('show');
+    
+    // Trigger dramatic effects
+    setTimeout(() => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }, 100);
+    
+    // Play applause sound
+    const applauseAudio = document.getElementById('winnerApplauseAudio');
+    if (applauseAudio) {
+        applauseAudio.currentTime = 0;
+        applauseAudio.play().catch(e => console.log('Applause audio error:', e));
+    }
 }

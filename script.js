@@ -11,6 +11,8 @@ function setRandomDoubleJeopardy() {
     const randomIndex = Math.floor(Math.random() * tiles.length);
     const randomTile = tiles[randomIndex];
     doubleJeopardyTileId = randomTile.id;
+    // Mark the tile with a data attribute (visible in IDE, not in UI)
+    randomTile.setAttribute('data-double-jeopardy', 'true');
 }
 
 function addTileClickListeners() {
@@ -54,6 +56,7 @@ function openQuestion(tileId) {
     // Check if this is a Double Jeopardy tile
     if (tileId === doubleJeopardyTileId) {
         showDoubleJeopardyPopup();
+        startDoubleJeopardyTimer();
         // Delay opening the modal so the popup shows first
         setTimeout(() => {
             document.getElementById('questionModal').style.display = 'block';
@@ -81,10 +84,16 @@ function showDoubleJeopardyPopup() {
     const popup = document.getElementById('doubleJeopardyPopup');
     popup.classList.add('show');
     
-    // Auto-hide the popup after 2 seconds
-    setTimeout(() => {
-        popup.classList.remove('show');
-    }, 2000);
+    // Close popup when clicking on the dark overlay (outside the content)
+    popup.addEventListener('click', function closePopup(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Only close if clicking on the popup background, not the content
+        if (e.target === popup) {
+            popup.classList.remove('show');
+            popup.removeEventListener('click', closePopup);
+        }
+    });
 }
 
 function markAnswered() {
@@ -97,6 +106,14 @@ function markAnswered() {
 
 function closeModal() {
     document.getElementById('questionModal').style.display = 'none';
+    stopDoubleJeopardyTimer();
+    // Mark the tile as answered
+    if (window.currentTileId) {
+        const tile = document.getElementById(window.currentTileId);
+        if (tile) {
+            tile.classList.add('answered');
+        }
+    }
 }
 
 // Close modal when clicking outside of it
@@ -121,4 +138,48 @@ function resetBoard() {
         tile.classList.remove('answered');
     });
     setRandomDoubleJeopardy();
+}
+
+// Double Jeopardy Timer
+let doubleJeopardyTimer = null;
+
+function startDoubleJeopardyTimer() {
+    const timerDisplay = document.getElementById('timerDisplay');
+    if (!timerDisplay) return;
+    
+    // Clear any existing timer
+    if (doubleJeopardyTimer) {
+        clearInterval(doubleJeopardyTimer);
+    }
+    
+    let timeRemaining = 60; // 60 seconds
+    timerDisplay.classList.remove('hidden');
+    timerDisplay.textContent = '1:00';
+    
+    doubleJeopardyTimer = setInterval(() => {
+        timeRemaining--;
+        
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        
+        timerDisplay.textContent = display;
+        
+        if (timeRemaining <= 0) {
+            clearInterval(doubleJeopardyTimer);
+            timerDisplay.classList.add('hidden');
+        }
+    }, 1000);
+}
+
+function stopDoubleJeopardyTimer() {
+    if (doubleJeopardyTimer) {
+        clearInterval(doubleJeopardyTimer);
+        doubleJeopardyTimer = null;
+    }
+    
+    const timerDisplay = document.getElementById('timerDisplay');
+    if (timerDisplay) {
+        timerDisplay.classList.add('hidden');
+    }
 }
