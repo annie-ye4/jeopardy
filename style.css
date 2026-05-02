@@ -356,14 +356,17 @@ button {
 }
 
 .winner-photos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
     gap: 16px;
     margin-bottom: 22px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .winner-photos .photo-holder {
-    min-height: 220px;
+    width: 180px;
+    height: 220px;
 }
 
 .winner-photos .photo-holder img {
